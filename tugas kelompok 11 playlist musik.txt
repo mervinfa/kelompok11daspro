@@ -1,0 +1,102 @@
+//judul : tugas kelompok 11 playlist music
+// by kelompok 11
+// A11.2024.15679
+
+// Kamus
+int durasi1, durasi2, durasi3, durasi4, durasi5; // Durasi masing-masing lagu
+string judul1, judul2, judul3, judul4, judul5;    // Judul masing-masing lagu
+int i, j;              // Variabel pengulangan
+int jumlahlagu;        // Jumlah lagu yang ingin diputar dalam playlist
+int ngulang;           // Jumlah pengulangan playlist
+int totallagu;         // Total jumlah lagu dalam playlist
+
+// Fungsi utama (main)
+int main() {
+    // Inisialisasi judul dan durasi masing-masing lagu
+    judul1 = "Pelangi";
+    durasi1 = 217;
+
+    judul2 = "Orang ke 3";
+    durasi2 = 269;
+
+    judul3 = "Jakarta Hari Ini";
+    durasi3 = 225;
+
+    judul4 = "Serana";
+    durasi4 = 287;
+
+    judul5 = "Mawar Jingga";
+    durasi5 = 219;
+
+    // Menampilkan judul playlist dan daftar lagu
+    output  "Tampilkan playlist" 
+    output  "Nama playlist : kitheart"  
+    output  judul1  
+    output  judul2  
+    output  judul3  
+    output  judul4  
+    output  judul5  
+
+    // Meminta input dari pengguna untuk jumlah lagu yang ingin diputar
+    output "Berapa lagu yang ingin kamu putar?" 
+    input jumlahlagu
+
+    // Meminta input dari pengguna untuk jumlah pengulangan playlist
+    output "Berapa kali ingin diulang?" 
+    input ngulang
+
+    // jumlah total lagu dalam playlist
+    totallagu = 5
+
+    // Mengecek apakah jumlah lagu yang diminta valid
+    if (jumlahlagu <= totallagu) {
+        // Memulai pemutaran playlist
+        output "Memulai playlist musik" 
+        output 
+
+        // Pengulangan untuk jumlah yang diinginkan oleh pengguna
+        for (i = 0; i < ngulang; i++) {
+            // Switch untuk memilih berapa banyak lagu yang akan diputar berdasarkan input
+            switch (jumlahlagu) {
+                case 1:
+                    output  "Memutar lagu: "  judul1  " (" durasi1 " detik)" 
+                    break;
+                case 2:
+                    output  "Memutar lagu: " judul1 " ("  durasi1 " detik)" endl;
+                    output  "Memutar lagu: " judul2 " ("  durasi2 " detik)"
+                    break;
+                case 3:
+                    output  "Memutar lagu: "  judul1  " (" << durasi1  " detik)" 
+                    output  "Memutar lagu: "  judul2  " (" << durasi2  " detik)"  
+                    output  "Memutar lagu: "  judul3  " (" << durasi3  " detik)"
+                    break;
+                case 4:
+                    output  "Memutar lagu: "  judul1  " ("  durasi1  " detik)"  
+                    output  "Memutar lagu: "  judul2  " ("  durasi2  " detik)"  
+                    output  "Memutar lagu: "  judul3  " ("  durasi3  " detik)"  
+                    output  "Memutar lagu: "  judul4  " ("  durasi4  " detik)"  
+                    break;
+                case 5:
+                    output  "Memutar lagu: "  judul1  " ("  durasi1  " detik)"  
+                    output  "Memutar lagu: "  judul2  " ("  durasi2  " detik)"  
+                    output  "Memutar lagu: "  judul3  " ("  durasi3  " detik)"  
+                    output  "Memutar lagu: "  judul4  " ("  durasi4  " detik)" 
+                    output  "Memutar lagu: "  judul5  " ("  durasi5  " detik)"  
+                    break;
+                default:
+                    output  "Melebihi jumlah lagu di playlist"  
+                    break;
+            }
+        }
+    } else {
+        // Menampilkan pesan error jika jumlah lagu yang diminta melebihi jumlah total lagu
+        output  "Melebihi jumlah lagu di playlist" 
+        output  "Playlist selesai diputar" 
+        return 0;
+    }
+
+    // Pesan akhir saat playlist selesai diputar
+    output "Playlist selesai diputar" 
+
+    return 0;
+}
