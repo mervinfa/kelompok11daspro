@@ -1,70 +1,73 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-// Kamus
-struct Lagu {
+struct lagu {
     string judul;
     int durasi;
 };
 
-struct Playlist {
-    Lagu lagu[5];
-    int jumlahlagu; // Jumlah lagu dalam playlist
-    int ngulang;    // Jumlah kali playlist akan diulang
-};
-
-// Fungsi untuk menginisialisasi playlist
-void inisialisasiPlaylist(Playlist &playlist) {
-    playlist.lagu[0] = {"Pelangi", 217};
-    playlist.lagu[1] = {"Orang ke 3", 269};
-    playlist.lagu[2] = {"Jakarta Hari Ini", 225};
-    playlist.lagu[3] = {"Serana", 287};
-    playlist.lagu[4] = {"Mawar Jingga", 219};
+void playlistlagu(lagu playlist[], int &totallagu) {
+    totallagu = 5;
+    playlist[0] = {"pelangi", 217};
+    playlist[1] = {"orang ke 3", 269};
+    playlist[2] = {"jakarta hari ini", 225};
+    playlist[3] = {"serana", 287};
+    playlist[4] = {"mawar jingga", 217};
 }
 
-// Fungsi untuk menampilkan playlist
-void tampilkanPlaylist(const Playlist &playlist) {
-    cout << "Tampilkan playlist " << endl;
+void tampilkan(lagu playlist[], int &totallagu) {
+    cout << "Menampilkan playlist " << endl;
     cout << "Nama playlist : kitheart" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << playlist.lagu[i].judul << endl;
+    for (int i = 0; i < totallagu; i++) {
+
+        cout << i + 1 << ". " << playlist[i].judul << " " << playlist[i].durasi/60 << " menit " << playlist[i].durasi%60 << " detik"<< endl;
     }
     cout << endl;
 }
 
-// Fungsi untuk memutar playlist
-void putarPlaylist(const Playlist &playlist) {
+void putarplaylist(lagu playlist[], int memilihlagu[], int ngulang, int totallagu, int jumlahlagu) {
+    int totalDurasi = 0;
     cout << "Memulai playlist musik..." << endl;
     cout << endl;
-    if (playlist.jumlahlagu <= 5) {
-        for (int i = 0; i < playlist.ngulang; i++) { // Mengulang playlist sebanyak ngulang
-            for (int j = 0; j < playlist.jumlahlagu; j++) {
-                cout << "Memutar lagu: " << playlist.lagu[j].judul 
-                     << " (" << playlist.lagu[j].durasi << " detik)" << endl;
+    for (int i = 0; i < ngulang; i++) {
+        for (int j = 0; j < jumlahlagu; j++) {
+            int pilihlagu = memilihlagu[j];
+            if (pilihlagu < totallagu) {
+                cout << "Memutar lagu: " << playlist[pilihlagu].judul << " " << playlist[i].durasi/60 << " menit " << playlist[i].durasi%60 << " detik"<< endl;
+                totalDurasi += playlist[pilihlagu].durasi;
+            } else {
+                cout << "Indeks lagu " << pilihlagu << " melebihi jumlah lagu di playlist." << endl;
             }
-            cout << endl;
         }
-    } else {
-        cout << "Melebihi jumlah lagu di playlist" << endl;
+        cout << endl;
     }
+    cout << "Total durasi lagu yang diputar: " << totalDurasi/60 << " menit " << totalDurasi%60 << " detik." << endl;
     cout << "Playlist selesai diputar." << endl;
 }
 
-// Fungsi utama
 int main() {
-    Playlist playlist;
-    inisialisasiPlaylist(playlist);
+    int totallagu;
+    lagu playlist[100];
+    playlistlagu(playlist, totallagu);
+    tampilkan(playlist, totallagu);
 
-    tampilkanPlaylist(playlist);
-
+    int jumlahlagu;
     cout << "Berapa lagu yang ingin kamu putar?" << endl;
-    cin >> playlist.jumlahlagu;
+    cin >> jumlahlagu;
+
+    int memilihlagu[jumlahlagu];
+    cout << "Masukkan lagu yang ingin diputar ke dalam Query (dimulai dari 1):" << endl;
+    for (int i = 0; i < jumlahlagu; i++) {
+        cin >> memilihlagu[i];
+        memilihlagu[i]--; 
+    }
+
+    int ngulang;
     cout << "Berapa kali ingin diulang?" << endl;
-    cin >> playlist.ngulang;
+    cin >> ngulang;
     cout << endl;
 
-    putarPlaylist(playlist);
+    putarplaylist(playlist, memilihlagu, ngulang, totallagu, jumlahlagu);
 
     return 0;
 }

@@ -1,0 +1,38 @@
+Apa Itu & (Referensi)?
+Referensi adalah cara untuk mengubah nilai asli dari variabel yang diberikan ke dalam fungsi, bukan hanya salinan dari nilai tersebut.
+
+Tanpa &:
+Jika Anda tidak menggunakan &, fungsi hanya akan bekerja dengan salinan dari variabel yang diberikan. Artinya, perubahan yang dibuat dalam fungsi tidak mempengaruhi variabel asli di luar fungsi.
+
+Dengan &:
+Jika Anda menggunakan &, fungsi akan bekerja langsung dengan variabel asli. Jadi, perubahan yang dibuat dalam fungsi akan mempengaruhi variabel asli di luar fungsi.
+
+Contoh Sederhana:
+Misalkan kita punya variabel totallagu.
+
+Tanpa &:
+cpp
+void tambahSatu(int totallagu) {
+    totallagu += 1; // Ini hanya mengubah salinan lokal, bukan variabel asli
+}
+
+int main() {
+    int totallagu = 5;
+    tambahSatu(totallagu); // Nilai asli totallagu tetap 5
+    cout << totallagu; // Output: 5
+    return 0;
+}
+Dengan &:
+cpp
+void tambahSatu(int &totallagu) {
+    totallagu += 1; // Ini mengubah variabel asli
+}
+
+int main() {
+    int totallagu = 5;
+    tambahSatu(totallagu); // Nilai asli totallagu berubah menjadi 6
+    cout << totallagu; // Output: 6
+    return 0;
+}
+Kenapa Menggunakan &?
+Menggunakan & memungkinkan fungsi untuk mengubah nilai asli variabel, bukan hanya salinan lokal. Ini membuat fungsi lebih efisien dan memungkinkan perubahan yang dibuat dalam fungsi terlihat di luar fungsi.

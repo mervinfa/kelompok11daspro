@@ -1,0 +1,57 @@
+notasi play list lagu
+// Judul: Playlist Spotify
+
+// Kamus:
+struct Lagu {
+    string judul
+    int durasi
+}
+
+// Fungsi untuk mengisi playlist
+void isiPlaylist(Lagu playlist[], int &totalLagu) 
+{
+    totalLagu = 5
+
+    // Masukkan ke  array
+    playlist[0] = {"Pelangi", 217}
+    playlist[1] = {"Orang Ke-3", 269}
+    playlist[2] = {"Jakarta Hari Ini", 225}
+    playlist[3] = {"Serana", 287}
+    playlist[4] = {"Mawar Jingga", 217}
+}
+
+// Fungsi untuk menampilkan lagu playlist
+void tampilkanPlaylist(Lagu playlist[], int totalLagu) 
+{
+    output  "Daftar Lagu dalam Playlist:"  
+    output  "--------------------------------"  
+
+    // Loop untuk menampilkan setiap lagu
+    for ( i = 0 i < totalLagu i++) 
+    {
+        output  "Lagu "  i + 1  ": "  playlist[i].judul
+        output  " ("  playlist[i].durasi  " detik)"  
+        output "(int j = 0; j < jumlahlagu; j++)"    
+	    output "Memutar lagu: " << playlist[j].judul << " (" << playlist[j].durasi << " detik)"
+    }
+}
+totallagu --> integer
+i,j -->integer
+// Fungsi program
+main() {
+    Lagu playlist[100] // Array untuk menyimpan hingga 100 lagu
+    totalLagu = 0 // Variabel untuk menyimpan jumlah lagu
+
+    // Mengisi playlist dengan data awal
+    isiPlaylist(playlist, totalLagu)
+
+    // Menampilkan playlist
+    tampilkanPlaylist(playlist, totalLagu)
+
+    return 0
+}
+
+1. memilih sembarang lagu
+2. menghitung lagu semua
+
+
